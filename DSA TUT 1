@@ -1,0 +1,103 @@
+#include &lt;stdio.h&gt;
+int main()
+{
+int choice;
+char str1[100], str2[100], str3[100];
+int pos, len, i, j, flag;
+printf(&quot;String Operations\n&quot;);
+printf(&quot;1. Substring\n&quot;);
+printf(&quot;2. Palindrome\n&quot;);
+printf(&quot;3. Compare\n&quot;);
+printf(&quot;4. Copy\n&quot;);
+printf(&quot;5. Reverse\n&quot;);
+printf(&quot;Choose an option (1-5): &quot;);
+scanf(&quot;%d&quot;, &amp;choice);
+switch(choice)
+{
+case 1:
+printf(&quot;Enter a string: &quot;);
+scanf(&quot;%s&quot;, str1);
+printf(&quot;Enter starting position (0-based index): &quot;);
+scanf(&quot;%d&quot;, &amp;pos);
+printf(&quot;Enter length of substring: &quot;);
+scanf(&quot;%d&quot;, &amp;len);
+j = 0;
+
+for(i = pos; i &lt; pos + len &amp;&amp; str1[i] != &#39;\0&#39;; i++)
+{
+str2[j] = str1[i];
+j++;
+}
+str2[j] = &#39;\0&#39;;
+printf(&quot;Substring: %s\n&quot;, str2);
+break;
+case 2:
+printf(&quot;Enter a string: &quot;);
+scanf(&quot;%s&quot;, str3);
+len = 0;
+i = 0;
+flag = 0;
+while(str3[len] != &#39;\0&#39;)
+len++;
+j = len - 1;
+while(i &lt; len / 2)
+{
+if(str3[i] != str3[j])
+{
+flag = 1;
+break;
+}
+i++;
+j--;
+}
+if(flag == 0)
+printf(&quot;String is a palindrome.\n&quot;);
+
+else
+printf(&quot;String is not a palindrome.\n&quot;);
+break;
+case 3:
+printf(&quot;Enter first string: &quot;);
+scanf(&quot;%s&quot;, str1);
+printf(&quot;Enter second string: &quot;);
+scanf(&quot;%s&quot;, str2);
+i = 0;
+while(str1[i] != &#39;\0&#39; || str2[i] != &#39;\0&#39;)
+{
+if(str1[i] != str2[i])
+break;
+i++;
+}
+if(str1[i] == &#39;\0&#39; &amp;&amp; str2[i] == &#39;\0&#39;)
+printf(&quot;Strings are matching.\n&quot;);
+else
+printf(&quot;Strings are not matching.\n&quot;);
+break;
+case 4:
+printf(&quot;Enter a string: &quot;);
+scanf(&quot;%s&quot;, str1);
+i = 0;
+while(str1[i] != &#39;\0&#39;)
+{
+str2[i] = str1[i];
+i++;
+}
+str2[i] = &#39;\0&#39;;
+printf(&quot;Copied string: %s\n&quot;, str2);
+break;
+case 5:
+printf(&quot;Enter a string: &quot;);
+scanf(&quot;%s&quot;, str1);
+len = 0;
+while(str1[len] != &#39;\0&#39;)
+len++;
+printf(&quot;Reversed string: &quot;);
+for(i = len - 1; i &gt;= 0; i--)
+printf(&quot;%c&quot;, str1[i]);
+printf(&quot;\n&quot;);
+break;
+default:
+printf(&quot;Invalid choice!\n&quot;);
+}
+return 0;
+}
