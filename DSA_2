@@ -1,0 +1,32 @@
+#include &lt;stdio.h&gt;
+int binarySearch(int arr[], int low, int high, int key)
+{
+if (low &gt; high)
+return -1;
+int mid = (low + high) / 2;
+if(arr[mid]==key)
+return mid;
+if(key&lt;arr[mid])
+return binarySearch(arr, low, mid - 1, key);
+else
+return binarySearch(arr, mid + 1, high, key);
+}
+int main()
+{
+int n, key, i;
+printf(&quot;Enter the number of elements: &quot;);
+scanf(&quot;%d&quot;, &amp;n);
+int arr[n];
+printf(&quot;Enter the elements in sorted order:\n&quot;);
+for (i = 0; i &lt; n; i++)
+scanf(&quot;%d&quot;, &amp;arr[i]);
+printf(&quot;Enter the element to search: &quot;);
+scanf(&quot;%d&quot;, &amp;key);
+
+int result = binarySearch(arr, 0, n - 1, key);
+if (result != -1)
+printf(&quot;Element found at index %d&quot;, result);
+else
+printf(&quot;Element not found&quot;);
+return 0;
+}
